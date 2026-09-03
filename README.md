@@ -114,9 +114,9 @@ byte-eleitoral@urna:~$ echo "Status: pipeline rodando, análises em andamento �
 
 | Integrante | Função |
 |:---|:---|
-| _adicionar nome_ | _adicionar função_ |
-| _adicionar nome_ | _adicionar função_ |
-| _adicionar nome_ | _adicionar função_ |
+| Cindy Larissa Cardoso Fernandes | Engenheiro(a) de Dados (T-SQL / AWS) |
+| Vinicius Mello de Cavalho | Project Manager / Scrum Master |
+| Kauã da Silva Santos | Analista de BI (Power BI) · Analista de Dados / ETL |
 
 </div>
 
