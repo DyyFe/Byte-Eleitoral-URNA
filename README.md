@@ -130,3 +130,38 @@ byte-eleitoral@urna:~$ echo "Status: pipeline rodando, análises em andamento �
 **Projeto Inovation Lab - Faculdade**
 
 </div>
+
+
+## `<TratamentoDados />`
+
+O arquivo `tratar_tse_2018.py` trata as bases de perfil do eleitorado e de comparecimento/abstenção de 2018 e gera os arquivos para o Power BI.
+
+**O que ele gera** (na pasta `saida_powerbi/`, em .parquet e .csv):
+
+- `fato_comparecimento` e `fato_eleitorado`: números e códigos
+- `dim_municipio`, `dim_genero`, `dim_estado_civil`, `dim_faixa_etaria`, `dim_grau_escolaridade`: descrições dos códigos
+- `base_unificada`: tudo junto em uma tabela só
+
+Ao final, o script confere se a soma das colunas `QT_*` é igual à da base original.
+
+**Como rodar**
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+bash baixar_tse.sh
+unzip dados_tse_2018/eleitorado_perfil_2018.zip -d perfil_eleitorado_2018
+unzip dados_tse_2018/comparecimento_abstencao_2018.zip -d perfil_comparecimento_abstencao_2018
+python tratar_tse_2018.py
+```
+
+O script espera encontrar estes arquivos ao lado dele:
+
+```
+perfil_eleitorado_2018/perfil_eleitorado_2018.csv
+perfil_comparecimento_abstencao_2018/perfil_comparecimento_abstencao_2018_BRASIL.csv
+```
+
+**No Power BI:** importar os .parquet de `saida_powerbi/` e ligar cada dimensão às duas fatos pela coluna `CD_*`. As duas fatos não se ligam entre si. Filtrar o turno nas medidas de comparecimento. Na `base_unificada`, as colunas `QT_ELEITORES_*` só vêm preenchidas no 1º turno, para não somar em dobro.
+

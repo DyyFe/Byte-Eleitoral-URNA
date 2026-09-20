@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+saida_powerbi/
+*.zip
+*.csv
+*.parquet
+perfil_*/
+eleitorado_local_votacao_2018/
+transf_temporaria_secao_2018/
+transferencia_temporaria_2018/
